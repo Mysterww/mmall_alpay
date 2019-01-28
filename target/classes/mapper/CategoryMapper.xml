@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.vpclub.storage.mapper.CategoryMapper">
+
+
+    <select id="listCategory"  resultType="CateGoryModel">
+        select * FROM mall_category
+    </select>
+
+    <select id="listCategoryByid" resultType="CateGoryModel">
+        SELECT * FROM mall_category WHERE id=#{id}
+    </select>
+
+    <select id="listCategoryByid2" resultType="CateGoryModel">
+        SELECT * FROM mall_category WHERE id=#{id}
+    </select>
+
+    <select id="listCategoryBypid" resultType="CateGoryModel">
+        SELECT * FROM mall_category WHERE pid=#{pid}
+    </select>
+
+    <insert id="insertValue" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+      <selectKey resultType="Integer" keyProperty="id" order="AFTER">
+          SELECT LAST_INSERT_ID()
+      </selectKey>
+      insert into mall_category(name,pid)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.name},#{item.pid})
+        </foreach>
+
+    </insert>
+
+    <update id="updateCategory" parameterType="CateGoryModel">
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="pid!=null">
+                pid=#{pid},
+            </if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="batchDeleteCategory" parameterType="java.util.List">
+        DELETE FROM mall_category WHERE id IN
+        <foreach collection="array" item="item" index="index" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+
+    <resultMap id="menuMap" type="CateGoryModel">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="pid" property="pid"/>
+        <collection property="childs" ofType="CateGoryModel" column="id" select="listCategoryBypid"/>
+    </resultMap>
+
+    <select id="getAllCategory" resultMap="menuMap" parameterType="Integer">
+       <!-- SELECT
+            m.id,m.name,m.pid,
+            m2.id,m2.name,m2.pid
+        FROM mall_category m LEFT JOIN mall_category m2 ON m.id=m2.pid AND m.pid=#{pid}-->
+        SELECT * FROM mall_category WHERE pid=#{pid}
+    </select>
+
+
+
+
+
+
+</mapper>

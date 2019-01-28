@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="wukun@10.0.0.43">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="wukun">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="chenghao"/>
+    <schema id="4" parent="1" name="chentao"/>
+    <schema id="5" parent="1" name="chenzihao"/>
+    <schema id="6" parent="1" name="cloudplat_admin"/>
+    <schema id="7" parent="1" name="cloudplat_common"/>
+    <schema id="8" parent="1" name="commerce"/>
+    <schema id="9" parent="1" name="community"/>
+    <schema id="10" parent="1" name="content_info"/>
+    <schema id="11" parent="1" name="demo_admin"/>
+    <schema id="12" parent="1" name="demo_app"/>
+    <schema id="13" parent="1" name="demo_common"/>
+    <schema id="14" parent="1" name="demo_order"/>
+    <schema id="15" parent="1" name="employ_wh"/>
+    <schema id="16" parent="1" name="exp_knowledge"/>
+    <schema id="17" parent="1" name="gx_activity"/>
+    <schema id="18" parent="1" name="information_csc"/>
+    <schema id="19" parent="1" name="information_schema"/>
+    <schema id="20" parent="1" name="mcs_advert"/>
+    <schema id="21" parent="1" name="mcs_broadband"/>
+    <schema id="22" parent="1" name="mcs_giveflow"/>
+    <schema id="23" parent="1" name="mcs_onlinesale"/>
+    <schema id="24" parent="1" name="message"/>
+    <schema id="25" parent="1" name="mysql"/>
+    <schema id="26" parent="1" name="nnmobile"/>
+    <schema id="27" parent="1" name="performance_schema"/>
+    <schema id="28" parent="1" name="pipa_admin"/>
+    <schema id="29" parent="1" name="pipa_tasks"/>
+    <schema id="30" parent="1" name="pipa_user"/>
+    <schema id="31" parent="1" name="question_answer"/>
+    <schema id="32" parent="1" name="sailor"/>
+    <schema id="33" parent="1" name="shaxian"/>
+    <schema id="34" parent="1" name="tangjiaxin"/>
+    <schema id="35" parent="1" name="tjcamp"/>
+    <schema id="36" parent="1" name="userinfo_csc"/>
+    <schema id="37" parent="1" name="vpmanager"/>
+    <schema id="38" parent="1" name="wisave_admin"/>
+    <schema id="39" parent="1" name="wisave_common"/>
+    <schema id="40" parent="1" name="wisave_web"/>
+    <schema id="41" parent="1" name="workflow"/>
+    <schema id="42" parent="1" name="zabbix"/>
+    <schema id="43" parent="1" name="pm-admin"/>
+    <schema id="44" parent="1" name="pm-security"/>
+    <table id="45" parent="2" name="mall_category"/>
+    <table id="46" parent="2" name="mmall_cart"/>
+    <table id="47" parent="2" name="mmall_order"/>
+    <table id="48" parent="2" name="mmall_orderitem"/>
+    <table id="49" parent="2" name="mmall_product"/>
+    <table id="50" parent="2" name="mmall_shipping"/>
+    <table id="51" parent="2" name="mmall_user"/>
+    <table id="52" parent="2" name="phone_info"/>
+    <table id="53" parent="2" name="user_info"/>
+    <column id="54" parent="45" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="55" parent="45" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="45" name="pid">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="57" parent="45" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="58" parent="46" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="59" parent="46" name="product_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="60" parent="46" name="quantity">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="61" parent="46" name="user_id">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="62" parent="46" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="63" parent="47" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="64" parent="47" name="order_no">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="47" name="user_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="47" name="shipping_id">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="67" parent="47" name="payment">
+      <Position>5</Position>
+      <DataType>bigint(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="68" parent="47" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="69" parent="48" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="70" parent="48" name="user_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="48" name="orderno">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="72" parent="48" name="product_id">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="73" parent="48" name="product_name">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="74" parent="48" name="quantity">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="75" parent="48" name="totalprice">
+      <Position>7</Position>
+      <DataType>bigint(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="76" parent="48" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="77" parent="49" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="78" parent="49" name="category_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="79" parent="49" name="name">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="80" parent="49" name="price">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="81" parent="49" name="f_key1_idx">
+      <ColNames>category_id</ColNames>
+    </index>
+    <key id="82" parent="49" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="83" parent="49" name="f_key1">
+      <ColNames>category_id</ColNames>
+      <RefSchemaName>wukun</RefSchemaName>
+      <RefTableName>mall_category</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="84" parent="50" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="85" parent="50" name="user_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="50" name="receivername">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="87" parent="50" name="receiverphone">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="88" parent="50" name="receiveraddress">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="89" parent="50" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="90" parent="51" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="91" parent="51" name="username">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="92" parent="51" name="password">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="93" parent="51" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="94" parent="52" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="95" parent="52" name="phone_infocol">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="96" parent="52" name="user_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="97" parent="52" name="f_key_idx">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="98" parent="52" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="99" parent="53" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="100" parent="53" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="101" parent="53" name="age">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="102" parent="53" name="phone">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="103" parent="53" name="address">
+      <Position>5</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="104" parent="53" name="sex">
+      <Position>6</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <key id="105" parent="53" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

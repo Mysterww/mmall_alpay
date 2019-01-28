@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.vpclub.storage.mapper.OrderItenMapper">
+    <delete id="deleteByPrimaryKey" parameterType="Integer">
+        DELETE FROM mmall_orderitem WHERE id=#{id}
+    </delete>
+    <insert id="insert" parameterType="OrderItemModel" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO mmall_orderitem (user_id, orderno, product_id, product_name, quantity, totalprice) VALUES (#{user_id},#{orderno},#{product_id},#{product_name},#{quantity},#{totalprice})
+    </insert>
+
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="OrderItemModel">
+        INSERT INTO mmall_orderitem
+                <trim prefix="(" suffix=")" suffixOverrides=",">
+                    <if test="user_id!=null">
+                        user_id,
+                    </if>
+                    <if test="orderno!=null">
+                        orderno,
+                    </if>
+                    <if test="product_id">
+                        product_id,
+                    </if>
+                    <if test="product_name">
+                        product_name,
+                    </if>
+                    <if test="quantity!=null">
+                        quantity,
+                    </if>
+                    <if test="totalprice!=null">
+                        totalprice,
+                    </if>
+                </trim>
+                <trim prefix="values (" suffix=")" suffixOverrides=",">
+                    <if test="user_id!=null">
+                        #{user_id},
+                    </if>
+                    <if test="orderno!=null">
+                        #{orderno},
+                    </if>
+                    <if test="product_id">
+                        #{product_id},
+                    </if>
+                    <if test="product_name">
+                        #{product_name},
+                    </if>
+                    <if test="quantity!=null">
+                        #{quantity},
+                    </if>
+                    <if test="totalprice!=null">
+                        #{totalprice},
+                    </if>
+                </trim>
+    </insert>
+
+    <select id="selectByPrimaryKey" parameterType="Integer">
+        SELECT * FROM mmall_orderitem WHERE id=#{id}
+    </select>
+
+    <update id="updateByPrimaryKey" parameterType="OrderItemModel">
+        UPDATE mmall_orderitem
+       SET user_id=#{user_id},orderno=#{orderno},product_id=#{product_id},product_name=#{product_name},quantity=#{quantity},totalprice=#{totalprice}
+        WHERE id=#{id}
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="OrderItemModel">
+        UPDATE mmall_orderitem
+        <set>
+            <if test="user_id!=null">
+                user_id=#{user_id},
+            </if>
+            <if test="orderno!=null">
+                orderno=#{orderno},
+            </if>
+            <if test="product_id">
+                product_id=#{product_id},
+            </if>
+            <if test="product_name">
+                product_name=#{product_name},
+            </if>
+            <if test="quantity!=null">
+                quantity=#{quantity},
+            </if>
+            <if test="totalprice!=null">
+                totalprice=#{totalprice},
+            </if>
+        </set>
+       WHERE id=#{id}
+    </update>
+
+    <select id="getByOrderNoUserId" parameterType="map">
+        SELECT * FROM mmall_orderitem WHERE user_id=#{userId} AND orderno=#{orderNo}
+    </select>
+
+    <select id="getAllByOrderNo" parameterType="Integer" resultType="OrderItemModel">
+        SELECT * FROM mmall_orderitem WHERE orderno=#{orderNo}
+    </select>
+
+    <insert id="batchInsert" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO mmall_orderitem (user_id, orderno, product_id, product_name, quantity, totalprice) VALUES
+            <foreach collection="list" item="item" open="(" close=")" separator=",">
+                #{item.user_id},
+                #{item.orderno},
+                #{item.product_id},
+                #{item.product_name},
+                #{item.quantity},
+                #{item.totalprice}
+            </foreach>
+    </insert>
+</mapper>

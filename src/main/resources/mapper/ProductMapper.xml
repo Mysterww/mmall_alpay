@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.vpclub.storage.mapper.ProductMapper">
+    <select id="selectList"  resultType="ProductModel">
+        select * FROM mmall_product
+    </select>
+    <select id="selectByNameAndProductId" parameterType="ProductModel" resultType="map">
+      SELECT * FROM mmall_product
+        <where>
+            <if test="name!=null">
+                and name like #{productName}
+            </if>
+            <if test="id!=null">
+                AND id=#{id}
+            </if>
+        </where>
+    </select>
+    <select id="selectByPrimaryKey"  resultType="ProductModel">
+        select * FROM mmall_product WHERE id=#{id}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="ProductModel">
+        delete from mmall_product WHERE id=#{id}
+    </delete>
+
+    <select id="listProductByname" parameterType="string">
+        select * FROM mmall_product WHERE name LIKE '%${value}%'
+    </select>
+
+    <insert id="insert" parameterType="ProductModel" keyProperty="id" useGeneratedKeys="true">
+        insert into mmall_product (category_id, name, price) values (#{category_id},#{name},#{price})
+    </insert>
+    <insert id="insertSelective" parameterType="ProductModel">
+        INSERT INTO mmall_product
+                <trim prefix="(" suffix=")" suffixOverrides=",">
+                    <if test="category_id!=null">
+                        category_id,
+                    </if>
+                    <if test="name!=null">
+                        name,
+                    </if>
+                    <if test="price!=null">
+                        price,
+                    </if>
+                </trim>
+                <trim prefix="values(" suffix=")" suffixOverrides=",">
+                    <if test="category_id!=null">
+                        #{category_id},
+                    </if>
+                    <if test="name!=null">
+                        #{name},
+                    </if>
+                    <if test="price!=null">
+                        #{price},
+                    </if>
+                </trim>
+
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="ProductModel">
+        UPDATE mmall_product
+        <set>
+            <if test="category_id!=null">
+                category_id=#{category_id},
+            </if>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="price!=null">
+                price=#{price},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="ProductModel">
+        UPDATE mmall_product
+        set category_id=#{category_id},
+            name=#{name},
+            price=#{price}
+        WHERE id=#{id}
+    </update>
+    <select id="selectByNameAndCategoryIds" parameterType="map" resultType="ProductModel">
+        SELECT * FROM mmall_product
+        WHERE 1=1
+        <if test="name!=null">
+            and name LIKE #{name}
+        </if>
+        <if test="categoryIds!=null">
+            AND category_id IN 
+            <foreach collection="categoryIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="selectByCategoryId" resultType="ProductModel" parameterType="java.util.List">
+        SELECT * FROM mmall_product WHERE category_id IN
+        <foreach collection="list" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.vpclub.storage.mapper.ShippingMapper">
+    <delete id="deleteByPrimaryKey" parameterType="Integer">
+        DELETE FROM mmall_shipping WHERE id=#{id}
+    </delete>
+    <insert id="insert" parameterType="ShippingModel" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO mmall_shipping(user_id, receivername, receiverphone, receiveraddress) VALUES (#{user_id},#{receivername},#{receiverphone},#{receiveraddress})
+    </insert>
+
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO mmall_shipping
+                <trim prefix="(" suffix=")" suffixOverrides=",">
+                    <if test="user_id!=null">
+                        user_id,
+                    </if>
+                    <if test="receivername!=null">
+                        receivername,
+                    </if>
+                    <if test="receiverphone!=null">
+                        receiverphone,
+                    </if>
+                    <if test="receiveraddress">
+                        receiveraddress,
+                    </if>
+                </trim>
+                <trim prefix="values (" suffix=")" suffixOverrides=",">
+                    <if test="user_id!=null">
+                        #{user_id},
+                    </if>
+                    <if test="receivername!=null">
+                        #{receivername},
+                    </if>
+                    <if test="receiverphone!=null">
+                        #{receiverphone},
+                    </if>
+                    <if test="receiveraddress">
+                        #{receiveraddress},
+                    </if>
+                </trim>
+        where id=#{id}
+    </insert>
+
+    <select id="selectByPrimaryKey" resultType="ShippingModel">
+        SELECT * FROM mmall_shipping WHERE id=#{id}
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="ShippingModel">
+        UPDATE mmall_shipping
+        <set>
+            <if test="user_id!=null">
+            user_id=#{user_id},
+        </if>
+        <if test="receivername!=null">
+            receivername=#{receivername},
+        </if>
+        <if test="receiverphone!=null">
+            receiverphone=#{receiverphone},
+        </if>
+        <if test="receiveraddress">
+            receiveraddress=#{receiveraddress},
+        </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="ShippingModel">
+        UPDATE mmall_shipping SET user_id=#{user_id},receivername=#{receivername},receiverphone=#{receiverphone},receiveraddress=#{receiveraddress}
+    </update>
+    <delete id="deleteByShippingIdByUserId" parameterType="map">
+        DELETE FROM mmall_shipping WHERE user_id=#{userId} AND id=#{shippingId}
+    </delete>
+    
+<select id="selectByShippingIdByUserId" parameterType="map">
+    SELECT * FROM mmall_shipping WHERE id=#{shippingId} AND user_id=#{userId}
+</select>
+
+    <select id="selectByUserId" parameterType="Integer" resultType="ShippingModel">
+        SELECT * FROM mmall_shipping WHERE user_id=#{user_id}
+    </select>
+
+</mapper>

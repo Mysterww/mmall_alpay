@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.vpclub.storage.mapper.UserMapper">
+    <select id="selectByPrimaryKey" resultType="UserModel" parameterType="Integer">
+        SELECT * FROM mmall_user WHERE id=#{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="Integer">
+        DELETE FROM mmall_user WHERE id=#{id}
+    </delete>
+    <insert id="insert" parameterType="UserModel" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO mmall_user (username,password) VALUES (#{username},#{password})
+    </insert>
+    <insert id="insertSelective" parameterType="UserModel" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO mmall_user
+                <trim prefix="(" suffix=")" suffixOverrides=",">
+                    <if test="username!=null">
+                        username,
+                    </if>
+                    <if test="password!=null">
+                        password,
+                    </if>
+                </trim>
+                <trim prefix="values (" suffix=")" suffixOverrides=",">
+                    <if test="username!=null">
+                        #{username},
+                    </if>
+                    <if test="password!=null">
+                        #{password},
+                    </if>
+                </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="UserModel">
+        UPDATE mmall_user
+        <set>
+            <if test="username!=null">
+                username=#{username}
+            </if>
+            <if test="password!=null">
+                password=#{password}
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="UserModel">
+        UPDATE mmall_user
+        SET username=#{username},password=#{password}
+        WHERE id=#{id}
+    </update>
+    <select id="selectLogin" resultType="UserModel">
+        SELECT * FROM mmall_user WHERE username=#{username} and password=#{password}
+    </select>
+    <select id="checkUsername" resultType="int" parameterType="string">
+        SELECT count(1) FROM mmall_user
+    </select>
+</mapper>

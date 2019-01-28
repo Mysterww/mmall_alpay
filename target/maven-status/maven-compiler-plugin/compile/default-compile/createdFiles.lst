@@ -1,0 +1,6 @@
+cn\vpclub\services\CategoryServiceImp.class
+cn\vpclub\storage\mapper\CategoryMapper.class
+cn\Application.class
+cn\vpclub\model\CateGoryModel.class
+cn\vpclub\services\CategoryService.class
+cn\vpclub\controller\CategoryController.class
